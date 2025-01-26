@@ -27,9 +27,9 @@ let s:base = {
       \"Find Subword Under":      ['', 'x'],
       \"Select Cursor Down":      ['', 'n'],
       \"Select Cursor Up":        ['', 'n'],
-      \"Select j":                ['', 'n'],
-      \"Select k":                ['', 'n'],
-      \"Select l":                ['', 'n'],
+      \"Select n":                ['', 'n'],
+      \"Select e":                ['', 'n'],
+      \"Select i":                ['', 'n'],
       \"Select h":                ['', 'n'],
       \"Select w":                ['', 'n'],
       \"Select b":                ['', 'n'],
@@ -46,9 +46,9 @@ fun! vm#maps#all#permanent() abort
   let leader = g:Vm.leader.default
   let visual = g:Vm.leader.visual
 
-  " map <c-n> in any case
-  let maps["Find Under"][0]              = '<C-n>'
-  let maps["Find Subword Under"][0]      = '<C-n>'
+  " map <c-k> in any case
+  let maps["Find Under"][0]              = '<C-k>'
+  let maps["Find Subword Under"][0]      = '<C-k>'
 
   if g:VM_default_mappings
     let maps["Reselect Last"][0]         = leader.'gS'
@@ -57,7 +57,7 @@ fun! vm#maps#all#permanent() abort
     let maps["Select All"][0]            = leader.'A'
     let maps["Add Cursor Down"][0]       = '<C-Down>'
     let maps["Add Cursor Up"][0]         = '<C-Up>'
-    let maps["Select l"][0]              = '<S-Right>'
+    let maps["Select i"][0]              = '<S-Right>'
     let maps["Select h"][0]              = '<S-Left>'
     let maps["Visual Regex"][0]          = visual.'/'
     let maps["Visual All"][0]            = visual.'A'
@@ -92,8 +92,8 @@ fun! vm#maps#all#buffer() abort
 
   "select
   call extend(maps, {
-        \"Find Next":               ['n',         'n'],
-        \"Find Prev":               ['N',         'n'],
+        \"Find Next":               ['k',         'n'],
+        \"Find Prev":               ['K',         'n'],
         \"Goto Next":               [']',         'n'],
         \"Goto Prev":               ['[',         'n'],
         \"Seek Up":                 ['<C-b>',     'n'],
@@ -161,17 +161,17 @@ fun! vm#maps#all#buffer() abort
         \"Select Cursor Up":        ['<M-C-Up>',    'n'],
         \"Add Cursor Down":         ['<C-Down>',    'n'],
         \"Add Cursor Up":           ['<C-Up>',      'n'],
-        \"Select j":                ['<S-Down>',    'n'],
-        \"Select k":                ['<S-Up>',      'n'],
-        \"Select l":                ['<S-Right>',   'n'],
+        \"Select n":                ['<S-Down>',    'n'],
+        \"Select e":                ['<S-Up>',      'n'],
+        \"Select i":                ['<S-Right>',   'n'],
         \"Select h":                ['<S-Left>',    'n'],
-        \"Single Select l":         ['<M-Right>',   'n'],
+        \"Single Select i":         ['<M-Right>',   'n'],
         \"Single Select h":         ['<M-Left>',    'n'],
-        \"Select e":                ['',            'n'],
+        \"Select j":                ['',            'n'],
         \"Select ge":               ['',            'n'],
         \"Select w":                ['',            'n'],
         \"Select b":                ['',            'n'],
-        \"Select E":                ['',            'n'],
+        \"Select J":                ['',            'n'],
         \"Select BBW":              ['',            'n'],
         \"Move Right":              ['<M-S-Right>', 'n'],
         \"Move Left":               ['<M-S-Left>',  'n'],
@@ -209,13 +209,13 @@ fun! vm#maps#all#buffer() abort
 
   let insert_keys = get(g:, 'VM_insert_special_keys', ['c-v'])
   if index(insert_keys, 'c-a') >= 0
-    let maps["I CtrlA"] = ['<C-a>', 'i']
+    let maps["L CtrlA"] = ['<C-a>', 'l']
   endif
   if index(insert_keys, 'c-e') >= 0
-    let maps["I CtrlE"] = ['<C-e>', 'i']
+    let maps["L CtrlE"] = ['<C-e>', 'l']
   endif
   if index(insert_keys, 'c-v') >= 0
-    let maps["I Paste"] = ['<C-v>', 'i']
+    let maps["L Paste"] = ['<C-v>', 'l']
   endif
 
   "edit
